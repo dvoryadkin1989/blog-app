@@ -14,6 +14,16 @@ router.get("/", (req, res) => {
     res.send(data);
 });
 
+router.get("/:id", (req, res) => {
+    let data;
+    try {
+        data = postService.getById(req.params.id);
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+    res.send(data);
+});
+
 router.post("/", (req, res) => {
     let data;
     try {
