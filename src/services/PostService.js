@@ -4,7 +4,7 @@ class PostService {
     getAll() {
         let data;
         try {
-            data = db.posts
+            data = db.postsRepo.getAll();
         } catch (e) {
             throw new Error("Some error");
         }
@@ -12,18 +12,13 @@ class PostService {
     }
 
     insert(data) {
-        const post = {
-            ...data,
-            id: db.posts.length + 1
-        };
-        db.posts.push(post);
-        return post
+        return db.postsRepo.persist(data);
     }
 
     getById(id) {
         let posts;
         try {
-            posts = db.posts;
+            posts = db.postsRepo.getAll();
         } catch (e) {
             throw new Error("Some error");
         }
