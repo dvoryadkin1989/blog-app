@@ -36,6 +36,14 @@ class PostService {
             throw new Error("Some error");
         }
     }
+
+    update(id, text) {
+        const updatedPost = {
+            id: Number(id),
+            ...text
+        };
+        db.postsRepo.update(updatedPost);
+    }
 }
 
 module.exports = new PostService();

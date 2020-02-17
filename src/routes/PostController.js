@@ -42,4 +42,13 @@ router.delete("/:id", (req, res) => {
     res.send("ok");
 });
 
+router.put("/:id", (req, res) => {
+    try {
+        postService.update(req.params.id, req.body);
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+    res.send("ok");
+});
+
 module.exports = router;

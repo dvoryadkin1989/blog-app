@@ -20,6 +20,12 @@ class PostRepo {
         const postsWithoutDeleted = this.getAll().filter(post => post.id !== id);
         saveToFile(postsWithoutDeleted);
     }
+
+    update(post) {
+        const posts = this.getAll();
+        posts.find(p => p.id === post.id).text = post.text;
+        saveToFile(posts);
+    }
 }
 
 function nextId(posts) {
