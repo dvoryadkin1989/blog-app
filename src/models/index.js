@@ -1,4 +1,4 @@
-const postsRepo = require('./postRepo');
+const postsRepo = require('./PostRepo');
 module.exports = {
     postsRepo,
 };

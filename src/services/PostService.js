@@ -28,6 +28,14 @@ class PostService {
         }
         return post;
     }
+
+    deleteById(id) {
+        try {
+            db.postsRepo.delete(Number(id));
+        } catch (e) {
+            throw new Error("Some error");
+        }
+    }
 }
 
 module.exports = new PostService();

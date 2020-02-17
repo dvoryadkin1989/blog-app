@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
     let data;
     try {
         data = postService.getAll();
-
     } catch (e) {
         res.status(500).send({message: e.message});
     }
@@ -28,11 +27,19 @@ router.post("/", (req, res) => {
     let data;
     try {
         data = postService.insert(req.body);
-
     } catch (e) {
         res.status(500).send({message: e.message});
     }
     res.send(data);
+});
+
+router.delete("/:id", (req, res) => {
+    try {
+        postService.deleteById(req.params.id);
+    } catch (e) {
+        res.status(500).send({message: e.message});
+    }
+    res.send("ok");
 });
 
 module.exports = router;
